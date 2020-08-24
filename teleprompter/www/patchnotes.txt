@@ -16,7 +16,7 @@ Table of contents:
 
 Information
 TelePrompt is a free open source app that serves as a teleprompter with a built in recording feature for speeches.
-It's source code can be downloaded using [wget -m http://aceius.rf.gd/Apps/TelePrompt]
+It's source code can be downloaded at https://github.com/AceiusIO/TelePrompt.git
 
 TelePrompt is licenced under the GNU licence.
 
