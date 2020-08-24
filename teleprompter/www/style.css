@@ -1,0 +1,41 @@
+/*
+
+// -- Teleprompter -- \\
+By AceiuSoftworks
+
+*/
+
+body {
+    font-family: 'Calibri Light', Calibri, sans-serif;
+    background-color: black;
+    text-align: center;
+    color: white;
+}
+
+header {
+	font-family: Calibri, sans-serif;
+}
+
+h1 {
+	text-align: center;
+	font-family: Calibri, sans-serif;
+}
+
+h2 {
+	text-align: center;
+	font-family: Calibri, sans-serif;
+}
+
+p {
+	font-family: 'Calibri Light', Calibri, sans-serif;
+}
+
+button {
+	font-family: 'Calibri Light', Calibri, sans-serif;
+	text-align: center;
+}
+
+a {
+	font-family: 'Calibri Light', Calibri, sans-serif;
+	color: white;
+}

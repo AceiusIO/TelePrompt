@@ -1,0 +1,91 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <!--JS-->
+    <script src="/asset/js/jquery-3.5.1.min.js"></script>
+    
+    <!--Fancy-->
+	<title>TelePrompt</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/asset/Logo.png"></link>
+</head>
+
+<body>
+	<h1 id="Header">TelePrompt</h1>
+    
+    <div id="scroll">
+	    <div id="about">
+            <p>TelePrompt is an app that allows you to write speeches and then record them in app.</p>
+            <button onclick="start();" id="startbutton">Start</button>
+        </div>
+        
+        <div id="write">
+            <p>Enter your speech:</p>
+            <textarea cols="100" rows="25" id="speechin"></textarea><br>
+            <button onclick="record();" id="startbutton">Finish</button>
+        </div>
+
+        <div id="record">
+            <video autoplay id="video" ></video><br>
+            <button onclick="done();" id="end">Done</button><!--<button onclick="recordStart();" id="end">Start Recording</button>-->
+
+            <p id="recInner">Nothing Here yet. Since you got here, here's a <a href="https://www.google.com/search?q=play+snake">treat</a>!</p>
+        </div>
+
+        <div id="export">
+            <p id="load">Exporting...</p>
+        </div>
+    </div>
+
+    <script>
+        var speech = "The speech has not been input yet"
+
+        $("#about").hide();
+        $("#write").hide();
+        $("#record").hide();
+        $("#export").hide();
+
+        $("#about").slideDown("slow");
+
+        function start() {
+            $("#about").slideUp("slow");
+            $("#startbutton").slideUp("slow");
+            $("#Header").slideUp("slow");
+            $("#write").slideDown("slow");
+        }
+
+        function record() {
+            var speechtmp = document.getElementById("speechin").value;
+            console.log("User Speech Input: " + speechtmp);
+            speech = speechtmp
+
+            $("#recInner").html(speech);
+            $("#write").slideUp("slow");
+            $("#record").slideDown("slow");
+            
+
+            var video = document.getElementById('video');
+
+            
+            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true },{ audio: true }).then(function(stream) {
+                video.srcObject = stream;
+                video.play();
+                $("#video").slideDown("slow");
+            });
+            }
+        }
+
+        function done() {
+            $("#end").slideUp("slow");
+            $("#video").slideUp("slow");
+            $("#recInner").slideUp("slow");
+            $("#export").slideDown("slow");
+        }
+    </script>
+
+</body>
+</html>
