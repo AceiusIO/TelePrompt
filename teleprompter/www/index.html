@@ -38,7 +38,7 @@
 
         <div id="record">
             <video id="video" controls></video><br>
-            <button onclick="done();" id="end">Done</button><!--<button onclick="recordStart();" id="end">Start Recording</button>-->
+            <button onclick="done();" id="end">Done</button> <button onclick="recordStart();" id="RecordButton">Start Recording</button>
 
             <!--<h2 id="recTitle">Speech Title Goes Here</h2>-->
             <p id="recInner">Nothing Here yet. Since you got here, here's a <a href="https://www.google.com/search?q=play+snake">treat</a>!</p>
@@ -53,6 +53,9 @@
         // Initialize \\
         let speech = "The speech has not been input yet."
         let title = "The title has not been input yet."
+
+        let shouldStop = false
+        let stopped = true
 
         $("#Header").hide();
         $("#Header").slideDown("slow");
@@ -98,21 +101,39 @@
                 video.srcObject = stream;
                 video.play();
                 $("#video").slideDown("slow");
+                stopped = false
             });
             }
         }
 
         // Recording Control \\
 
+        const mediaRecorder = new MediaRecorder(stream, options);
+
+        mediaRecorder.addEventListener('dataavailable', function(e) {
+        if (e.data.size > 0) {
+            recordedChunks.push(e.data);
+        }
+
+        if(shouldStop === true && stopped === false) {
+            mediaRecorder.stop();
+            stopped = true;
+        }
+        });
+
         function recordStart() {
-            //
+            mediaRecorder.start();
         }
 
         function done() {
             $("#end").slideUp("slow");
+            $("#RecordButton").slideUp("slow");
             $("#video").slideUp("slow");
             $("#recInner").slideUp("slow");
             $("#export").slideDown("slow");
+            shouldStop = true
+            downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+            downloadLink.download = 'acetest.webm';
         }
     </script>
 
