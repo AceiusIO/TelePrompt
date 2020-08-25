@@ -29,8 +29,10 @@
         </div>
         
         <div id="write">
-            <p>Enter your speech:</p>
+            
+            <p>Enter your speech here:</p>
             <textarea cols="100" rows="25" id="speechin"></textarea><br>
+            <label for="#namein">Name your speech:</label> <input type="text" value="Untitled Speech"></input>
             <button onclick="record();" id="startbutton">Finish</button>
         </div>
 
@@ -38,6 +40,7 @@
             <video autoplay id="video" ></video><br>
             <button onclick="done();" id="end">Done</button><!--<button onclick="recordStart();" id="end">Start Recording</button>-->
 
+            <!--<h2 id="recTitle">Speech Title Goes Here</h2>-->
             <p id="recInner">Nothing Here yet. Since you got here, here's a <a href="https://www.google.com/search?q=play+snake">treat</a>!</p>
         </div>
 
@@ -47,7 +50,9 @@
     </div>
 
     <script>
+        // Initialize \\
         let speech = "The speech has not been input yet."
+        let title = "The title has not been input yet."
 
         $("#Header").hide();
         $("#Header").slideDown("slow");
@@ -59,6 +64,8 @@
 
         $("#about").slideDown("fast");
 
+        // Event Triggered Functions \\
+
         function start() {
             $("#about").slideUp("slow");
             $("#startbutton").slideUp("slow");
@@ -67,16 +74,23 @@
         }
 
         function record() {
-            var speechtmp = document.getElementById("speechin").value;
+            let speechtmp = document.getElementById("speechin").value;
+
+            //let titletmp = document.getElementById("titlein").value;
+
             console.log("User Speech Input: " + speechtmp);
-            speech = speechtmp
+            console.log("User Title Input: " + titletmp);
+
+            //speech = speechtmp
+            title = titletmp
 
             $("#recInner").html(speech);
+            $("#recTitle").html(title);
             $("#write").slideUp("slow");
             $("#record").slideDown("slow");
             
 
-            var video = document.getElementById('video');
+            let video = document.getElementById('video');
 
             
             if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -87,6 +101,10 @@
             });
             }
         }
+
+        // Recording Control \\
+
+        //yet to add code
 
         function done() {
             $("#end").slideUp("slow");

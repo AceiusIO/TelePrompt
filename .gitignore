@@ -1,5 +1,0 @@
-#TelePrompt .gitignore
-# Failture to Ignore will cause massive upload times
-/node_modules/
-/plugins/
-/platforms/
