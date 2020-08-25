@@ -6,7 +6,7 @@
         TelePrompt is a free open-source teleprompter app.
     </description>
     <author email="archmantella13@gmail.com" href="http://aceius.rf.gd">
-        AceiuSoftworks
+        AceiusIO
     </author>
     <content src="index.html" />
     <access origin="*" />
