@@ -38,7 +38,7 @@
 
         <div id="record">
             <video id="video" controls></video><br>
-            <button onclick="done();" id="end">Done</button> <button onclick="recordStart();" id="RecordButton">Start Recording</button>
+            <button onclick="done();" id="end" event="stop">Done</button> <button onclick="recordStart();" id="RecordButton">Start Recording</button>
 
             <!--<h2 id="recTitle">Speech Title Goes Here</h2>-->
             <p id="recInner">Nothing Here yet. Since you got here, here's a <a href="https://www.google.com/search?q=play+snake">treat</a>!</p>
@@ -121,6 +121,11 @@
         }
         });
 
+        mediaRecorder.addEventListener('stop', function() {
+        downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+        downloadLink.download = 'acetest.webm';
+        });
+
         function recordStart() {
             mediaRecorder.start();
         }
@@ -132,8 +137,7 @@
             $("#recInner").slideUp("slow");
             $("#export").slideDown("slow");
             shouldStop = true
-            downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-            downloadLink.download = 'teleprompter.webm';
+            
         }
     </script>
 

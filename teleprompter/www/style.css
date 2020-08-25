@@ -36,6 +36,12 @@ textarea {
 	color: white;
 }
 
+input {
+	font-family: 'Calibri Light', Calibri, sans-serif;
+	background-color: black;
+	color: white;
+}
+
 button {
 	font-family: 'Calibri Light', Calibri, sans-serif;
 	text-align: center;
