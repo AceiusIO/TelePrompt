@@ -37,7 +37,7 @@
         </div>
 
         <div id="record">
-            <video autoplay id="video" ></video><br>
+            <video id="video" controls></video><br>
             <button onclick="done();" id="end">Done</button><!--<button onclick="recordStart();" id="end">Start Recording</button>-->
 
             <!--<h2 id="recTitle">Speech Title Goes Here</h2>-->
@@ -79,10 +79,10 @@
             //let titletmp = document.getElementById("titlein").value;
 
             console.log("User Speech Input: " + speechtmp);
-            console.log("User Title Input: " + titletmp);
+            //console.log("User Title Input: " + titletmp);
 
-            //speech = speechtmp
-            title = titletmp
+            speech = speechtmp
+            //title = titletmp
 
             $("#recInner").html(speech);
             $("#recTitle").html(title);
@@ -104,7 +104,9 @@
 
         // Recording Control \\
 
-        //yet to add code
+        function recordStart() {
+            //
+        }
 
         function done() {
             $("#end").slideUp("slow");
