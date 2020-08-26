@@ -143,15 +143,18 @@
         }
 
         function done() {
+            // Effects
             $("#end").slideUp("slow");
             $("#video").slideUp("slow");
             $("#RecordButton").slideUp("slow");
             $("#RecordStopButton").slideUp("slow");
             $("#recInner").slideUp("slow");
             $("#export").slideDown("slow");
+
+            // Stop Video
             shouldStop = true
             downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-            downloadLink.download = 'speech.webm';
+            downloadLink.download = "speech.webm";
         }
     </script>
 
