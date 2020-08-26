@@ -130,11 +130,6 @@
             stopped = false;
         }
 
-        mediaRecorder.addEventListener('stop', function() {
-            downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-            downloadLink.download = 'speech.webm';
-        });
-
         function recordStart() {
             $("#RecordStopButton").slideDown();
             $("#RecordButton").slideUp();
@@ -155,6 +150,8 @@
             $("#recInner").slideUp("slow");
             $("#export").slideDown("slow");
             shouldStop = true
+            downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+            downloadLink.download = 'speech.webm';
         }
     </script>
 
