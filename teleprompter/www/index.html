@@ -38,7 +38,7 @@
 
         <div id="record">
             <video id="video"></video><br>
-            <button onclick="done();" id="end" event="stop">Done</button> <button onclick="recordStart();" id="RecordButton">Start Recording</button> <button onclick="recordStop();" id="RecordStopButton">Stop Recording</button>
+            <button onclick="done();" id="end">Done</button> <button onclick="recordStart();" id="RecordButton">Start Recording</button> <button onclick="recordStop();" id="RecordStopButton">Stop Recording</button>
 
             <!--<h2 id="recTitle">Speech Title Goes Here</h2>-->
             <p id="recInner">Nothing Here yet. Since you got here, here's a <a href="https://www.google.com/search?q=play+snake">treat</a>!</p>
@@ -66,6 +66,8 @@
         $("#write").hide();
         $("#record").hide();
         $("#export").hide();
+        $("#end").hide();
+        $("#RecordStopButton").hide();
 
         $(document).ready(); {
             $("#scroll").slideDown("fast");
@@ -80,6 +82,8 @@
             $("#Header").slideUp("slow");
             $("#write").slideDown("slow");
         }
+
+        // Recording Control \\
 
         function record() {
             let speechtmp = document.getElementById("speechin").value;
@@ -111,8 +115,6 @@
             }
         }
 
-        // Recording Control \\
-
         const mediaRecorder = new MediaRecorder(stream, options);
 
         mediaRecorder.addEventListener('dataavailable', function(e) {
@@ -126,17 +128,26 @@
         }
         });
 
+        if(shouldStop === false && stopped === true) {
+            mediaRecorder.start();
+            stopped = false;
+        }
+
         mediaRecorder.addEventListener('stop', function() {
             downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
             downloadLink.download = 'speech.webm';
         });
 
         function recordStart() {
-            mediaRecorder.start();
+            $("#RecordStopButton").slideDown();
+            $("#RecordButton").slideUp();
         }
 
         function recordStop() {
-            mediaRecorder.stop();
+            shouldStop = true
+            $("#RecordStopButton").slideUp();
+            $("#RecordButton").slideDown();
+            $("#end").slideDown();
         }
 
         function done() {
