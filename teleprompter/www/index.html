@@ -51,9 +51,6 @@
         let speech = "The speech has not been input yet."
         let title = "The title has not been input yet."
 
-        let shouldStop = false
-        let stopped = true
-
         $("#scroll").hide();
 
         $("#Header").hide();
@@ -113,33 +110,19 @@
         }
 
         const mediaRecorder = new MediaRecorder(stream, options);
-
-        mediaRecorder.addEventListener('dataavailable', function(e) {
-        if (e.data.size > 0) {
-            recordedChunks.push(e.data);
-        }
-
-        if(shouldStop === true && stopped === false) {
-            mediaRecorder.stop();
-            stopped = true;
-        }
-        });
-
-        if(shouldStop === false && stopped === true) {
-            mediaRecorder.start();
-            stopped = false;
-        }
+        mediaRecorder.stop();
 
         function recordStart() {
             $("#RecordStopButton").slideDown();
             $("#RecordButton").slideUp();
+            mediaRecorder.start();
         }
 
         function recordStop() {
-            shouldStop = true
             $("#RecordStopButton").slideUp();
             $("#RecordButton").slideDown();
             $("#end").slideDown();
+            mediaRecorder.stop();
         }
 
         function done() {
@@ -152,7 +135,9 @@
             $("#export").slideDown("slow");
 
             // Stop Video
-            shouldStop = true
+            mediaRecorder.stop();
+
+            // Export
             downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
             downloadLink.download = "speech.webm";
         }
