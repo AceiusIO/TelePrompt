@@ -32,13 +32,13 @@
             
             <p>Enter your speech here:</p>
             <textarea cols="100" rows="25" id="speechin"></textarea><br>
-            <label for="#namein">Name your speech:</label> <input type="text" value="Untitled Speech"></input>
+            <label for="#namein">Name your speech:</label> <!--<input type="text" value="Untitled Speech"></input>-->
             <button onclick="record();" id="startbutton">Finish</button>
         </div>
 
         <div id="record">
-            <video id="video" controls></video><br>
-            <button onclick="done();" id="end" event="stop">Done</button> <button onclick="recordStart();" id="RecordButton">Start Recording</button>
+            <video id="video"></video><br>
+            <button onclick="done();" id="end" event="stop">Done</button> <button onclick="recordStart();" id="RecordButton">Start Recording</button> <button onclick="recordStop();" id="RecordStopButton">Stop Recording</button>
 
             <!--<h2 id="recTitle">Speech Title Goes Here</h2>-->
             <p id="recInner">Nothing Here yet. Since you got here, here's a <a href="https://www.google.com/search?q=play+snake">treat</a>!</p>
@@ -68,7 +68,8 @@
         $("#export").hide();
 
         $(document).ready(); {
-            $("#about").slideDown("fast");
+            $("#scroll").slideDown("fast");
+            $("#about").slideDown("slow");
         }
 
         // Event Triggered Functions \\
@@ -126,18 +127,23 @@
         });
 
         mediaRecorder.addEventListener('stop', function() {
-        downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-        downloadLink.download = 'speech.webm';
+            downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+            downloadLink.download = 'speech.webm';
         });
 
         function recordStart() {
             mediaRecorder.start();
         }
 
+        function recordStop() {
+            mediaRecorder.stop();
+        }
+
         function done() {
             $("#end").slideUp("slow");
-            $("#RecordButton").slideUp("slow");
             $("#video").slideUp("slow");
+            $("#RecordButton").slideUp("slow");
+            $("#RecordStopButton").slideUp("slow");
             $("#recInner").slideUp("slow");
             $("#export").slideDown("slow");
             shouldStop = true
