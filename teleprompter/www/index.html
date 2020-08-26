@@ -57,6 +57,8 @@
         let shouldStop = false
         let stopped = true
 
+        $("#scroll").hide();
+
         $("#Header").hide();
         $("#Header").slideDown("slow");
 
@@ -65,7 +67,9 @@
         $("#record").hide();
         $("#export").hide();
 
-        $("#about").slideDown("fast");
+        $(document).ready(); {
+            $("#about").slideDown("fast");
+        }
 
         // Event Triggered Functions \\
 
@@ -123,7 +127,7 @@
 
         mediaRecorder.addEventListener('stop', function() {
         downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-        downloadLink.download = 'acetest.webm';
+        downloadLink.download = 'speech.webm';
         });
 
         function recordStart() {
@@ -137,7 +141,6 @@
             $("#recInner").slideUp("slow");
             $("#export").slideDown("slow");
             shouldStop = true
-            
         }
     </script>
 
