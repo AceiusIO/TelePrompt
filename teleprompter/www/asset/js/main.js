@@ -1,3 +1,7 @@
+// -- TelePrompt Core -- \\
+
+// By AceiusIO
+
 // Initialize \\
 let speech = "The speech has not been input yet."
 let title = "The title has not been input yet."
