@@ -7,14 +7,16 @@ By AceiusIO And Bully-Man
 
 body {
     font-family: 'Calibri Light', Calibri, sans-serif;
-    background-color: black;
+    background-color: white;
     text-align: center;
-    color: white;
+    color: black;
 }
 
 header {
-    font-family: Calibri, sans-serif;
-    background-color: blue;
+	font-family: Calibri, sans-serif;
+
+	color: white;
+    	background-color: blue;
 }
 
 h1 {
@@ -45,7 +47,18 @@ input {
 
 button {
 	font-family: 'Calibri Light', Calibri, sans-serif;
-	text-align: center;
+		text-align: center;
+}
+
+.add-speech {
+	border: 0px;
+		border-radius: 50px;
+
+	color: white;
+		background-color: blue;
+
+	text-emphasis: bold;
+		font-size: 25px;
 }
 
 a {
