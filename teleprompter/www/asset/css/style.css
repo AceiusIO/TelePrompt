@@ -44,7 +44,9 @@ input {
 
 button {
 	font-family: 'Calibri Light', Calibri, sans-serif;
+	background-color: black;
 	text-align: center;
+	color: white;
 }
 
 a {

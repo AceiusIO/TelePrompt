@@ -8,8 +8,8 @@ let title = "The title has not been input yet."
 
 $("#scroll").hide();
 
-$("#Header").hide();
-$("#Header").slideDown("slow");
+$("header").hide();
+$("header").slideDown("slow");
 
 $("#about").hide();
 $("#write").hide();
@@ -28,7 +28,7 @@ $(document).ready(); {
 function start() {
     $("#about").slideUp("slow");
     $("#startbutton").slideUp("slow");
-    $("#Header").slideUp("slow");
+    $("header").slideUp("slow");
     $("#write").slideDown("slow");
 }
 
