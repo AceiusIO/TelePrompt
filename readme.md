@@ -1,6 +1,5 @@
 TelePrompt
 ===========
-![Commit Counter](https://img.shields.io/github/commit-activity/w/AceiusIO/TelePrompt)  
 ![Contributor Counter](https://img.shields.io/github/contributors/AceiusIO/TelePrompt)
 
 TelePrompt will be a free, open source teleprompter app with a native recording feature.
