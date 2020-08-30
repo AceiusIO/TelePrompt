@@ -9,5 +9,4 @@ Currently we are building to mobile with [Apache Cordova](https://cordova.apache
 Developer Information
 ---------------------
 Helping with the github code is welcome, and youll be attributed. 🙂  
-![Contributors](https://img.shields.io/github/contributors/AceiusIO/TelePrompt)  
 The /[teleprompter](https://github.com/AceiusIO/TelePrompt/tree/master/teleprompter) folder contains all source code.
