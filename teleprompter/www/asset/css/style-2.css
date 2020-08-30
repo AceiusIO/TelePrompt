@@ -46,8 +46,13 @@ input {
 }
 
 button {
+	border: 0px;
+
 	font-family: 'Calibri Light', Calibri, sans-serif;
 		text-align: center;
+
+	color: white;
+		background-color: blue;	
 }
 
 .add-speech {
@@ -63,5 +68,7 @@ button {
 
 a {
 	font-family: 'Calibri Light', Calibri, sans-serif;
+	
 	color: white;
+			background-color: blue;
 }
