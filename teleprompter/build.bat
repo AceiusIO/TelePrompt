@@ -4,7 +4,6 @@ cls
 
 echo Cordova Preper
 echo By AceiusIO
-color 01
 
 cordova prepare
 
