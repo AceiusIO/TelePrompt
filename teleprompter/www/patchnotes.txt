@@ -5,22 +5,23 @@ ___________    .__        __________                               __
   |____| \___  >____/\___  >____|     |__|   \____/|__|_|  /   __/|__|  
              \/          \/                              \/|__|  
 0.1 By AceiusIO
-====================================================================================================================================================================
+==========================================================================
 
 Table of contents:
 * Information
 * Change Notes
 * Roadmap
 * Previous Versions
-====================================================================================================================================================================
+==========================================================================
 
 Information
-TelePrompt is a free open source app that serves as a teleprompter with a built in recording feature for speeches.
-It's source code can be downloaded at https://github.com/AceiusIO/TelePrompt.git
+TelePrompt is a free open source app that serves as a teleprompter with a 
+built in recording feature for speeches. It's source code can be downloaded
+at https://github.com/AceiusIO/TelePrompt.git
 
 TelePrompt is licenced under the GNU licence.
 
-====================================================================================================================================================================
+==========================================================================
 
 Changenotes
 Version 0.1 on 8/21/2020
