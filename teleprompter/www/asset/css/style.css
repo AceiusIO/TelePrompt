@@ -16,6 +16,8 @@ header {
 	font-family: Calibri, sans-serif;
 }
 
+/* Text CSS */
+
 h1 {
 	text-align: center;
 	font-family: Calibri, sans-serif;
@@ -26,9 +28,18 @@ h2 {
 	font-family: Calibri, sans-serif;
 }
 
+h3 {
+	font-family: Calibri, sans-serif;
+		text-align: center;
+
+	color: grey;
+}
+
 p {
 	font-family: 'Calibri Light', Calibri, sans-serif;
 }
+
+/* Other CSS */
 
 textarea {
 	font-family: 'Calibri Light', Calibri, sans-serif;

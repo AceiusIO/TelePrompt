@@ -6,10 +6,24 @@
 let speech = "The speech has not been input yet."
 let title = "The title has not been input yet."
 
+// Choose a fact to display on the loading screen
+
+let factList = [
+"Teleprompter is powered by 349 lines of code!",
+"You can use ANY HTML markup in you're speeches?",
+"The fact has not been choosen yet. Okay fine. XD",
+"You can find the source code on github!",
+"This was written in javascript!"]
+
+let fact = "The fact has not been choosen yet."
+
+fact = factList[Math.floor(Math.random() * factList.length)]; 
+
+// Hide Stuff
+
 $("#scroll").hide();
 
 $("header").hide();
-$("header").slideDown("slow");
 
 $("#about").hide();
 $("#write").hide();
@@ -19,8 +33,13 @@ $("#end").hide();
 $("#RecordStopButton").hide();
 
 $(document).ready(); {
-    $("#scroll").slideDown("fast");
-    $("#about").slideDown("slow");
+    $("#intro-fact-core").html("Did you know? " + fact);
+    setTimeout(function(){
+        $("#scroll").slideDown("fast");
+        $("#about").slideDown("slow");
+        $("#intro-fact").fadeOut();
+        $("header").slideDown("slow");
+    }, 2500);
 }
 
 // Event Triggered Functions \\

@@ -2,16 +2,16 @@
   "name": "teleprompt",
   "displayName": "com.aceiussoftworks.aceiusio.teleprompter",
   "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
-  "main": "index.js",
+  "description": "TelePrompt is a free open-source teleprompter app.",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "ecosystem:cordova"
   ],
-  "author": "Apache Cordova Team",
-  "license": "Apache-2.0",
+  "author": "AceiusIO",
+  "license": "GPL 3",
   "devDependencies": {
     "cordova-browser": "^6.0.0",
     "cordova-plugin-whitelist": "^1.3.4"
