@@ -3,14 +3,23 @@
 // By AceiusIO
 
 // Initialize \\
+
+// Varubles
 let speech = "The speech has not been input yet."
 let title = "The title has not been input yet."
 
+// Constants
+const video = document.querySelector('video');
+const constraints = {
+    video: true
+};
+
+navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream});
 // Choose a fact to display on the loading screen
 
 let factList = [
 "Teleprompter is powered by 349 lines of code!",
-"You can use ANY HTML markup in you're speeches?",
+"You can use ANY HTML markup in your speeches?",
 "The fact has not been choosen yet. Okay fine. XD",
 "You can find the source code on github!",
 "This was written in javascript!"]
@@ -25,11 +34,12 @@ $("#scroll").hide();
 
 $("header").hide();
 
+$("#end").hide();
+$("#finish").hide();
 $("#about").hide();
 $("#write").hide();
 $("#record").hide();
 $("#export").hide();
-$("#end").hide();
 $("#RecordStopButton").hide();
 
 $(document).ready(); {
@@ -69,18 +79,17 @@ function record() {
     $("#write").slideUp("slow");
     $("#record").slideDown("slow");
     
-
-    let video = document.getElementById('video');
-
-    
+/*
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true },{ audio: true }).then(function(stream) {
-        video.srcObject = stream;
-        video.play();
-        $("#video").slideDown("slow");
-        stopped = false
-    });
+            video.srcObject = stream;
+            video.play();
+            $("#video").slideDown("slow");
+            stopped = false
+        });
     }
+*/
+
 }
 
 const mediaRecorder = new MediaRecorder(stream, options);

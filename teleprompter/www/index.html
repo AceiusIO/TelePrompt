@@ -30,6 +30,7 @@
 	    <div id="about">
             <p>TelePrompt is an app that allows you to write speeches and then record them in app.</p>
             <button onclick="start();" id="startbutton">Start</button>
+            <button target="popup" onclick="window.open('about.html','name','width=600,height=400')">About</button>
         </div>
         
         <div id="write">
@@ -41,7 +42,7 @@
         </div>
 
         <div id="record">
-            <video id="video"></video><br>
+            <video></video><br>
             <button onclick="done();" id="end">Done</button> <button onclick="recordStart();" id="RecordButton">Start Recording</button> <button onclick="recordStop();" id="RecordStopButton">Stop Recording</button>
 
             <!--<h2 id="recTitle">Speech Title Goes Here</h2>-->
@@ -50,6 +51,10 @@
 
         <div id="export">
             <p id="load">Exporting...</p>
+        </div>
+
+        <div id="finish">
+            <p>Finished!</p>
         </div>
     </div>
 
