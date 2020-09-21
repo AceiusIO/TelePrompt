@@ -1,32 +1,35 @@
 // -- TelePrompt Core -- \\
 
-// By AceiusIO
+const version = 0.1
+const author = "AceiusIO"
 
-// Initialize \\
+// Initialize ///////////////////
 
 // Varubles
 let speech = "The speech has not been input yet."
 let title = "The title has not been input yet."
 
 // Constants
-const video = document.querySelector('video');
-const constraints = {
-    video: true
-};
-
-navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream});
-// Choose a fact to display on the loading screen
+const video = document.querySelector("video");
+const exitcamera = new Event("stop");
 
 let factList = [
-"Teleprompter is powered by 349 lines of code!",
-"You can use ANY HTML markup in your speeches?",
+"Teleprompter is powered by 1466 lines of code!",
+"You can use ANY HTML markup in your speeches!",
 "The fact has not been choosen yet. Okay fine. XD",
 "You can find the source code on github!",
-"This was written in javascript!"]
+"This was written in javascript!",
+"If you disable CSS, you'll be able to play a game of snake!"]
 
 let fact = "The fact has not been choosen yet."
 
 fact = factList[Math.floor(Math.random() * factList.length)]; 
+
+// Console
+console.log("" + version);
+console.log("By: " + author);
+console.log("");
+console.log('Choose fact "' + fact + '"');
 
 // Hide Stuff
 
@@ -52,7 +55,7 @@ $(document).ready(); {
     }, 2500);
 }
 
-// Event Triggered Functions \\
+// Event Triggered Functions ///////////////////
 
 function start() {
     $("#about").slideUp("slow");
@@ -61,39 +64,62 @@ function start() {
     $("#write").slideDown("slow");
 }
 
-// Recording Control \\
+function infoShow() {
+    $("#about").slideUp("slow");
+    $("#eleborate").slideDown("slow");
+}
+
+// Recording Control
 
 function record() {
-    let speechtmp = document.getElementById("speechin").value;
+    speech = $("#speechin").html();
+    title = $("#titlein").val();
 
-    //let titletmp = document.getElementById("titlein").value;
-
-    console.log("User Speech Input: " + speechtmp);
-    //console.log("User Title Input: " + titletmp);
-
-    speech = speechtmp
-    //title = titletmp
+    console.log("User Speech Input: " + speech);
+    console.log("User Title Input: " + title);
 
     $("#recInner").html(speech);
     $("#recTitle").html(title);
     $("#write").slideUp("slow");
     $("#record").slideDown("slow");
     
-/*
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true },{ audio: true }).then(function(stream) {
             video.srcObject = stream;
             video.play();
+            console.log("==================================================================================================");
+            console.log("HOLDUP! From this point on, pasting ANYTHING in this console could cause serious camera problems.");
+            console.log("IN FACT, Pasting anything in this console is dangerous if you don't know what you are doing.");
+            console.log("CLOSE the console and stay safe.");
             $("#video").slideDown("slow");
             stopped = false
         });
     }
-*/
-
 }
 
-const mediaRecorder = new MediaRecorder(stream, options);
-mediaRecorder.stop();
+var handleSuccess = function(stream) {
+    const options = {mimeType: 'video/webm'};
+    const recordedChunks = [];
+    const mediaRecorder = new MediaRecorder(stream, options);
+
+    mediaRecorder.addEventListener('dataavailable', function(e) {
+          if (e.data.size > 0) {
+            recordedChunks.push(e.data);
+        }
+
+        if(shouldStop === true && stopped === false) {
+            mediaRecorder.stop();
+            stopped = true;
+        }
+    });
+
+    mediaRecorder.addEventListener('stop', function() {
+        downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+        downloadLink.download = 'speech.webm';
+    });
+
+    mediaRecorder.start();
+};
 
 function recordStart() {
     $("#RecordStopButton").slideDown();
@@ -109,18 +135,12 @@ function recordStop() {
 }
 
 function done() {
-    // Effects
     $("#end").slideUp("slow");
     $("#video").slideUp("slow");
     $("#RecordButton").slideUp("slow");
     $("#RecordStopButton").slideUp("slow");
-    $("#recInner").slideUp("slow");
+    $("#record").slideUp("slow");
     $("#export").slideDown("slow");
 
-    // Stop Video
-    mediaRecorder.stop();
-
-    // Export
-    downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-    downloadLink.download = "speech.webm";
+    mediaRecorder.dispatchEvent(exitcamera);
 }
