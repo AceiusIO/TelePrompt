@@ -3,7 +3,7 @@
   "displayName": "com.aceiussoftworks.aceiusio.teleprompter",
   "version": "1.0.0",
   "description": "TelePrompt is a free open-source teleprompter app.",
-  "main": "index.html",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",
@@ -15,7 +15,6 @@
   ],
   "author": "AceiusIO",
   "license": "GPL 3",
-  "main": "app.js",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.53",
     "@electron-forge/maker-deb": "^6.0.0-beta.53",
@@ -35,7 +34,9 @@
     ]
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "jquery": "^3.5.1",
+    "jsdom": "^16.4.0"
   },
   "config": {
     "forge": {

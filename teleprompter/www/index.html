@@ -6,16 +6,12 @@
     <!-- By Aceius E. (AceiusIO) -->
 
     <!-- JQuery -->
-    <script src="asset/js/libs/jquery-351-minified.js"></script>
+    <script>window.$ = window.jQuery = require('jquery');</script>
     
     <!-- Fancy -->
     <title>TelePrompt</title>
     <link href="asset/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="asset/css/hidden.css" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="www/asset/Logo.png"></link>
-
-    <!-- Lack of JS Warning -->
-    <p id="js-warning" class="js-warning" style="color: red;"><b>If you are seeing this, you forgot to use the cordova server.</b></p>
+    <link rel="shortcut icon" href="asset/Logo.png"></link>
 </head>
 
 <body>
@@ -37,6 +33,7 @@
             <p>TelePrompt is a free and open source teleprompter app. It was written in JavaScript, JQuery.js, and RecordRTC.js by AceiusIO.</p>
             <p>Additional CSS was written by Bully-Man on GitHub. This app has been licensed under the GNU Public Licence V3.0, giving you the right to copy,</p>
             <p>the source code on GitHub, distrubiute it, and modify it.</p>
+            <button onclick="infoHide();">Back</button>
         </div>
         
         <div id="write">
@@ -64,7 +61,6 @@
         </div>
     </div>
 
-    <script src="/asset/js/main.js"></script>
-    <script src="/asset/js/admin.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

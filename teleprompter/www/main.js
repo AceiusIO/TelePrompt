@@ -43,6 +43,7 @@ $("#about").hide();
 $("#write").hide();
 $("#record").hide();
 $("#export").hide();
+$("#elaborate").hide();
 $("#RecordStopButton").hide();
 
 $(document).ready(); {
@@ -66,7 +67,12 @@ function start() {
 
 function infoShow() {
     $("#about").slideUp("slow");
-    $("#eleborate").slideDown("slow");
+    $("#elaborate").slideDown("slow");
+}
+
+function infoHide() {
+    $("#about").slideDown("slow");
+    $("#elaborate").slideUp("slow");
 }
 
 // Recording Control

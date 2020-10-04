@@ -2,14 +2,16 @@
 
 cls
 
-echo Cordova Preper
-echo By AceiusIO
+echo This is an outdated program for back when we used cordova. Use `test` instead.
 
-cordova prepare
+:echo Cordova Preper
+:echo By AceiusIO
 
-cordova serve
+:cordova prepare
 
-echo Done.
+:cordova serve
 
-timeout 3
-EXIT /B
+:echo Done.
+
+:timeout 3
+:EXIT /B
