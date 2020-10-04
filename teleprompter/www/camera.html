@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!-- By Aceius E. (AceiusIO) -->
+
+    <!-- JQuery -->
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    
+    <!-- Fancy -->
+    <title>TelePrompt</title>
+    <link href="asset/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="asset/Logo.png"></link>
+</head>
+
+<body>
+    <script>recordStart();</script>
+	<header><h1>TelePrompt</h1></header>
+    
+    <video id="video" autoplay></video><br>
+    <button onclick="done();" id="end">Done</button> <button onclick="recordStart();" id="RecordButton">Start Recording</button> <button onclick="recordStop();" id="RecordStopButton">Stop Recording</button>
+    <script type = "text/javascript">
+        let shouldStop = false;
+        let stopped = false;
+        const downloadLink = document.getElementById('download');
+        const stopButton = document.getElementById('RecordStopButton');
+
+        stopButton.addEventListener('click', function() {
+            shouldStop = true;
+        })
+
+        var handleSuccess = function(stream) {
+            const options = {mimeType: 'video/webm'};
+            const recordedChunks = [];
+            const mediaRecorder = new MediaRecorder(stream, options);
+
+            mediaRecorder.addEventListener('dataavailable', function(e) {
+            if (e.data.size > 0) {
+                recordedChunks.push(e.data);
+            }
+
+            if(shouldStop === true && stopped === false) {
+                mediaRecorder.stop();
+                stopped = true;
+            }
+            });
+
+            mediaRecorder.addEventListener('stop', function() {
+            downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+            downloadLink.download = 'speech.webm';
+            });
+
+            mediaRecorder.start();
+        };
+
+        navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+            .then(handleSuccess);
+    </script>
+
+    <script src="main.js"></script>
+</body>
+</html>

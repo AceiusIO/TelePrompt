@@ -79,7 +79,7 @@ function infoHide() {
 
 function record() {
     speech = $("#speechin").html();
-    title = $("#titlein").val();
+    //title = $("#titlein").html();
 
     console.log("User Speech Input: " + speech);
     console.log("User Title Input: " + title);
@@ -88,19 +88,6 @@ function record() {
     $("#recTitle").html(title);
     $("#write").slideUp("slow");
     $("#record").slideDown("slow");
-    
-    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true },{ audio: true }).then(function(stream) {
-            video.srcObject = stream;
-            video.play();
-            console.log("==================================================================================================");
-            console.log("HOLDUP! From this point on, pasting ANYTHING in this console could cause serious camera problems.");
-            console.log("IN FACT, Pasting anything in this console is dangerous if you don't know what you are doing.");
-            console.log("CLOSE the console and stay safe.");
-            $("#video").slideDown("slow");
-            stopped = false
-        });
-    }
 }
 
 var handleSuccess = function(stream) {
