@@ -3,11 +3,26 @@
 const version = 0.1
 const author = "AceiusIO"
 
-// Initialize ///////////////////
+// Initialize  
+const NodeWebcam = require("node-webcam")
 
 // Varubles
 let speech = "The speech has not been input yet."
 let title = "The title has not been input yet."
+
+let opts = {
+    width: 1280,
+    height: 720,
+    quality: 100,
+    frames: 60,
+    delay: 0,
+    saveShots: true,
+    output: "jpeg",
+    device: false,
+    callbackReturn: "location",
+    verbose: false
+ 
+};
 
 // Constants
 const video = document.querySelector("video");
@@ -56,7 +71,7 @@ $(document).ready(); {
     }, 2500);
 }
 
-// Event Triggered Functions ///////////////////
+// Event Triggered Functions  
 
 function start() {
     $("#about").slideUp("slow");
@@ -88,31 +103,21 @@ function record() {
     $("#recTitle").html(title);
     $("#write").slideUp("slow");
     $("#record").slideDown("slow");
+
+    var Webcam = NodeWebcam.create( opts );
+    Webcam.capture( "thumb", function( err, data ) {} );
+    Webcam.list( function( list ) {
+        let anotherCam = NodeWebcam.create( { device: list[ 0 ] } );
+    });
+
+    //var opts = {
+        //callbackReturn: "base64"
+    //};
+     
+    //NodeWebcam.capture( "thumb", opts, function( err, data ) {
+        //var image = "<img src='" + data + "'>"; 
+    //});
 }
-
-var handleSuccess = function(stream) {
-    const options = {mimeType: 'video/webm'};
-    const recordedChunks = [];
-    const mediaRecorder = new MediaRecorder(stream, options);
-
-    mediaRecorder.addEventListener('dataavailable', function(e) {
-          if (e.data.size > 0) {
-            recordedChunks.push(e.data);
-        }
-
-        if(shouldStop === true && stopped === false) {
-            mediaRecorder.stop();
-            stopped = true;
-        }
-    });
-
-    mediaRecorder.addEventListener('stop', function() {
-        downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-        downloadLink.download = 'speech.webm';
-    });
-
-    mediaRecorder.start();
-};
 
 function recordStart() {
     $("#RecordStopButton").slideDown();
