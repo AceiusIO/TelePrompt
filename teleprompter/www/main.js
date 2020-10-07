@@ -105,9 +105,10 @@ function record() {
     $("#record").slideDown("slow");
 
     var Webcam = NodeWebcam.create( opts );
-    Webcam.capture( "thumb", function( err, data ) {} );
+    Webcam.capture( "www/thumb.jpg", function( err, data ) {} );
     Webcam.list( function( list ) {
         let anotherCam = NodeWebcam.create( { device: list[ 0 ] } );
+    relocateThumb();
     });
 
     //var opts = {
