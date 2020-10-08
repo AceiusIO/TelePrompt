@@ -10,7 +10,7 @@
 
 TelePrompt will be a free (as in freedom), open source teleprompter app with a native recording feature.
 You'll be able to enter your speech, record it, and send it to friends!
-Currently we are building with [electron](https://electronjs.org)  
+Currently we are building with [electron](https://electronjs.org). Previously we were using [apache cordova](https://cordova.apache.org), and may return for the final build.
 
 ## Developer Information
 Helping with the github code is welcome, and youll be attributed. :D  
@@ -19,5 +19,5 @@ The /[teleprompter](https://github.com/AceiusIO/TelePrompt/tree/master/telepromp
 You will need:
 * `node.js`
 * `electron`
-* `jquery`
+* `jquery`  
 `npm <PackageName>`  
