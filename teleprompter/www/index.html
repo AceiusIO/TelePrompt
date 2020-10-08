@@ -40,20 +40,21 @@
             
             <p>Use HTML Markup to style your speech, such as using &lt;strong&gt; and &lt;/strong&gt; elements for <b>bold</b>, and &lt;em&gt; and &lt;/em&gt; elements for <i>itallics</i>.</p>
             <textarea cols="100" rows="25" id="speechin">Enter Your Speech</textarea><br>
-            <!--<label for="#namein">Name your speech:</label> <input type="text" value="Untitled Speech"></input>-->
-            <button onclick="record();" id="startbutton">Finish</button>
+            <p>Name your speech:</p>
+            <textarea rows="1">Untitled Speech</textarea> <button onclick="record();" id="startbutton">Finish</button>
         </div>
 
         <div id="record">
             <video id="video"></video><br>
             <button onclick="done();" id="end">Done</button> <button onclick="recordStart();" id="RecordButton">Start Recording</button> <button onclick="recordStop();" id="RecordStopButton">Stop Recording</button>
 
-            <h2 id="recTitle">Speech Title Goes Here</h2>
+            <h2 id="recTitle">Untitled Speech</h2>
             <p id="recInner">Nothing Here yet. Since you got here, here's a <a href="https://www.google.com/search?q=play+snake">treat</a>!</p>
         </div>
 
         <div id="export">
-            <img src=""></img>
+            <img src="thumb.jpg" width="50%" height="50%" />
+            <h2 id="exTitle"></h2>
         </div>
 
         <div id="finish">

@@ -11,6 +11,7 @@ function createWindow () {
   })
 
   win.loadFile('www/index.html')
+  //win.removeMenu()
 }
 
 app.whenReady().then(createWindow);
@@ -25,4 +26,4 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
   }
-})  
+})

@@ -28,6 +28,9 @@ let opts = {
 const video = document.querySelector("video");
 const exitcamera = new Event("stop");
 
+let shouldStop = false;
+let stopped = false;
+
 let factList = [
 "Teleprompter is powered by 1466 lines of code!",
 "You can use ANY HTML markup in your speeches!",
@@ -94,7 +97,7 @@ function infoHide() {
 
 function record() {
     speech = $("#speechin").html();
-    //title = $("#titlein").html();
+    title = $("#titlein").html();
 
     console.log("User Speech Input: " + speech);
     console.log("User Title Input: " + title);
@@ -105,32 +108,49 @@ function record() {
     $("#record").slideDown("slow");
 
     var Webcam = NodeWebcam.create( opts );
-    Webcam.capture( "www/thumb.jpg", function( err, data ) {} );
+    Webcam.capture("www/thumb.jpg", function( err, data ) {});
     Webcam.list( function( list ) {
         let anotherCam = NodeWebcam.create( { device: list[ 0 ] } );
     relocateThumb();
     });
 
-    //var opts = {
-        //callbackReturn: "base64"
-    //};
-     
-    //NodeWebcam.capture( "thumb", opts, function( err, data ) {
-        //var image = "<img src='" + data + "'>"; 
-    //});
+    var handleSuccess = function(stream) {
+        const options = {mimeType: 'video/webm'};
+        const recordedChunks = [];
+        const mediaRecorder = new MediaRecorder(stream, options);
+
+        mediaRecorder.addEventListener('dataavailable', function(e) {
+        if (e.data.size > 0) {
+            recordedChunks.push(e.data);
+        }
+
+        if(shouldStop === true && stopped === false) {
+            mediaRecorder.stop();
+            stopped = true;
+        }
+        });
+
+        mediaRecorder.addEventListener('stop', function() {
+        downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+        downloadLink.download = 'speech.webm';
+        });
+
+        mediaRecorder.start();
+    };
+
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+        .then(handleSuccess);
 }
 
 function recordStart() {
     $("#RecordStopButton").slideDown();
     $("#RecordButton").slideUp();
-    mediaRecorder.start();
 }
 
 function recordStop() {
     $("#RecordStopButton").slideUp();
     $("#RecordButton").slideDown();
     $("#end").slideDown();
-    mediaRecorder.stop();
 }
 
 function done() {
@@ -140,6 +160,5 @@ function done() {
     $("#RecordStopButton").slideUp("slow");
     $("#record").slideUp("slow");
     $("#export").slideDown("slow");
-
-    mediaRecorder.dispatchEvent(exitcamera);
+    $("#exTitle").html(title);
 }
