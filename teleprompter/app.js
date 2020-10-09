@@ -1,6 +1,8 @@
 const electron = require('electron')
 const { app, BrowserWindow } = require('electron')
 
+const config = require('config.js')
+
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
