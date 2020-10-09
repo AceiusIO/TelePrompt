@@ -4,7 +4,7 @@ const version = 0.1
 const author = "AceiusIO"
 
 // Initialize  
-const NodeWebcam = require("node-webcam")
+const NodeWebcam = require("node-webcam");
 
 // Varubles
 let speech = "The speech has not been input yet."
