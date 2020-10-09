@@ -111,7 +111,6 @@ function record() {
     Webcam.capture("www/thumb.jpg", function( err, data ) {});
     Webcam.list( function( list ) {
         let anotherCam = NodeWebcam.create( { device: list[ 0 ] } );
-    relocateThumb();
     });
 
     var handleSuccess = function(stream) {
