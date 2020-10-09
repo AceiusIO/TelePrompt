@@ -32,12 +32,13 @@ let shouldStop = false;
 let stopped = false;
 
 let factList = [
-"Teleprompter is powered by 1466 lines of code!",
+"Teleprompter is powered by 6713 lines of code!",
 "You can use ANY HTML markup in your speeches!",
 "The fact has not been choosen yet. Okay fine. XD",
 "You can find the source code on github!",
 "This was written in javascript!",
-"If you disable CSS, you'll be able to play a game of snake!"]
+"If you disable CSS, you'll be able to play a game of snake!",
+"TelePrompt automatically makes a thumbnail for your speech!"]
 
 let fact = "The fact has not been choosen yet."
 
