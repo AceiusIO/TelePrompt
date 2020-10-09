@@ -8,7 +8,7 @@
 ```  
 ![Contributor Counter](https://img.shields.io/github/contributors/AceiusIO/TelePrompt)
 
-TelePrompt will be a free (as in freedom), open source teleprompter app with a native recording feature.
+TelePrompt will be an open source teleprompter app with a native recording feature.
 You'll be able to enter your speech, record it, and send it to friends!
 Currently we are building with [electron](https://electronjs.org). Previously we were using [apache cordova](https://cordova.apache.org), and may return for the final build.
 
