@@ -1,3 +1,5 @@
+// Config For TP \\
+
 module.exports = {
     app = 'TelePrompt',
     author = 'AceiusIO',
